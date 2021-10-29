@@ -42,6 +42,6 @@ const MovieSchema = new mongoose.Schema(
 );
 
 module.export = mongoose.model(
-	"User",
+	"Movie",
 	MovieSchema
 );
