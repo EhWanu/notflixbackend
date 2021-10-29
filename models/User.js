@@ -16,12 +16,12 @@ const UserSchema = new mongoose.Schema(
 			required: true,
 		},
 		ProfilePic: { type: String, default: "" },
-		isAdmin: { type: boolean, default: "false" },
+		isAdmin: { type: Boolean, default: "false" },
 	},
 	{ timestamps: true }
 );
 
-module.export = mongoose.model(
+module.exports = mongoose.model(
 	"User",
 	UserSchema
 );
