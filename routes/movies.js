@@ -40,4 +40,25 @@ router.put("/:id", verify, async (req, res) => {
 	}
 });
 
+//DELETE
+
+router.delete(
+	"/:id",
+	verify,
+	async (req, res) => {
+		if (req.user.isAdmin) {
+			try {
+				await Movie.findByIdAndDelete(req.params.id);
+				res
+					.status(200)
+					.json("The Movie has been deleted");
+			} catch {
+				res.status(500).json(err);
+			}
+		} else {
+			res.status(403).json("You are not an admin");
+		}
+	}
+);
+
 module.exports = router;
