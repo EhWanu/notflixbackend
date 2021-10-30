@@ -36,7 +36,33 @@ router.put("/:id", verify, async (req, res) => {
 			.json("You can only update your account!");
 	}
 });
+
 //DELETE
+router.delete(
+	"/:id",
+	verify,
+	async (req, res) => {
+		if (
+			req.user.id === req.params.id ||
+			req.user.isAdmin
+		) {
+			try {
+				const updatedUser =
+					await User.findByIdAndDelete(req.params.id);
+				res
+					.status(200)
+					.json("User has been deleted...");
+			} catch (err) {
+				res.status(500).json(err);
+			}
+		} else {
+			res
+				.status(403)
+				.json("You can only delete  your account!");
+		}
+	}
+);
+
 //GET
 //GET ALL
 //GET USER STATS
