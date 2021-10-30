@@ -9,6 +9,12 @@ router.put("/:id", async (req, res) => {
 		req.user.id === req.params.id ||
 		req.user.isAdmin
 	) {
+		if (req.body.password) {
+			req.body.password = CryptoJS.AES.encrypt(
+				req.body.password,
+				process.env.SECRET_KEY
+			).toString();
+		}
 	}
 });
 //DELETE
