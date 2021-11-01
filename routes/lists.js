@@ -29,7 +29,7 @@ router.delete(
 				await findByIdAndDelete.save(req.params.id);
 				res
 					.status(201)
-					.json("Th e list has been deleted");
+					.json("The list has been deleted");
 			} catch (err) {
 				res.status(500).json(err);
 			}
